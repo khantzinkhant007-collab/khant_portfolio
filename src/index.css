@@ -1,0 +1,204 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Khant Zin Portfolio — iOS glassmorphism design system
+   Palette: deep black, clean white, warm yellow accent.
+   All colors HSL. */
+
+@layer base {
+  :root {
+    --background: 0 0% 4%;
+    --foreground: 0 0% 98%;
+
+    --card: 0 0% 7%;
+    --card-foreground: 0 0% 98%;
+
+    --popover: 0 0% 7%;
+    --popover-foreground: 0 0% 98%;
+
+    --primary: 48 100% 56%;
+    --primary-foreground: 0 0% 6%;
+
+    --secondary: 0 0% 12%;
+    --secondary-foreground: 0 0% 98%;
+
+    --muted: 0 0% 12%;
+    --muted-foreground: 0 0% 64%;
+
+    --accent: 48 100% 56%;
+    --accent-foreground: 0 0% 6%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 0 0% 100% / 0.08;
+    --input: 0 0% 100% / 0.1;
+    --ring: 48 100% 56%;
+
+    --radius: 1.25rem;
+
+    /* Brand tokens */
+    --yellow: 48 100% 56%;
+    --yellow-soft: 48 100% 65%;
+    --yellow-glow: 48 100% 56% / 0.45;
+
+    /* Glass tokens */
+    --glass-bg: 0 0% 100% / 0.04;
+    --glass-bg-strong: 0 0% 100% / 0.07;
+    --glass-border: 0 0% 100% / 0.1;
+    --glass-border-yellow: 48 100% 56% / 0.25;
+
+    /* Gradients */
+    --gradient-radial-yellow: radial-gradient(circle at 50% 0%, hsl(48 100% 56% / 0.18), transparent 60%);
+    --gradient-hero: radial-gradient(ellipse at top, hsl(48 100% 56% / 0.12), transparent 50%), radial-gradient(ellipse at bottom right, hsl(0 0% 100% / 0.05), transparent 60%);
+
+    /* Shadows */
+    --shadow-glass: 0 8px 32px hsl(0 0% 0% / 0.4), inset 0 1px 0 hsl(0 0% 100% / 0.06);
+    --shadow-yellow: 0 0 32px hsl(48 100% 56% / 0.35);
+    --shadow-yellow-strong: 0 0 60px hsl(48 100% 56% / 0.5);
+  }
+}
+
+@layer base {
+  * {
+    border-color: hsl(0 0% 100% / 0.08);
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Inter", system-ui, sans-serif;
+    background-image:
+      radial-gradient(ellipse 80% 50% at 50% -10%, hsl(48 100% 56% / 0.12), transparent),
+      radial-gradient(ellipse 60% 40% at 80% 50%, hsl(0 0% 100% / 0.03), transparent),
+      radial-gradient(ellipse 60% 40% at 10% 80%, hsl(48 100% 56% / 0.06), transparent);
+    background-attachment: fixed;
+  }
+
+  ::selection {
+    background: hsl(var(--yellow) / 0.3);
+    color: hsl(var(--foreground));
+  }
+
+  h1, h2, h3, h4 {
+    letter-spacing: -0.025em;
+  }
+}
+
+@layer components {
+  /* iOS-like frosted glass */
+  .glass {
+    background: hsl(0 0% 100% / 0.04);
+    backdrop-filter: blur(24px) saturate(180%);
+    -webkit-backdrop-filter: blur(24px) saturate(180%);
+    border: 1px solid hsl(0 0% 100% / 0.1);
+    box-shadow: var(--shadow-glass);
+  }
+
+  .glass-strong {
+    background: hsl(0 0% 100% / 0.07);
+    backdrop-filter: blur(28px) saturate(200%);
+    -webkit-backdrop-filter: blur(28px) saturate(200%);
+    border: 1px solid hsl(0 0% 100% / 0.12);
+    box-shadow: var(--shadow-glass);
+  }
+
+  .glass-yellow {
+    background: hsl(48 100% 56% / 0.06);
+    backdrop-filter: blur(24px) saturate(180%);
+    -webkit-backdrop-filter: blur(24px) saturate(180%);
+    border: 1px solid hsl(48 100% 56% / 0.25);
+    box-shadow: 0 8px 32px hsl(0 0% 0% / 0.4), inset 0 1px 0 hsl(48 100% 56% / 0.12);
+  }
+
+  .glass-nav {
+    background: hsl(0 0% 6% / 0.55);
+    backdrop-filter: blur(28px) saturate(180%);
+    -webkit-backdrop-filter: blur(28px) saturate(180%);
+    border: 1px solid hsl(0 0% 100% / 0.08);
+  }
+
+  .yellow-glow {
+    box-shadow: 0 0 32px hsl(48 100% 56% / 0.35), inset 0 1px 0 hsl(0 0% 100% / 0.08);
+  }
+
+  .yellow-glow-hover {
+    transition: box-shadow 300ms ease, transform 300ms ease, border-color 300ms ease;
+  }
+  .yellow-glow-hover:hover {
+    box-shadow: 0 0 48px hsl(48 100% 56% / 0.45), inset 0 1px 0 hsl(0 0% 100% / 0.1);
+    border-color: hsl(48 100% 56% / 0.4);
+    transform: translateY(-2px);
+  }
+
+  .text-gradient-yellow {
+    background: linear-gradient(135deg, hsl(48 100% 70%), hsl(48 100% 50%));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  /* 3D tilt setup */
+  .tilt-card {
+    transform-style: preserve-3d;
+    transition: transform 500ms cubic-bezier(0.22, 1, 0.36, 1), box-shadow 500ms ease;
+  }
+  .tilt-card:hover {
+    transform: perspective(1000px) rotateX(4deg) rotateY(-6deg) translateY(-4px);
+    box-shadow: 0 20px 60px hsl(0 0% 0% / 0.6), 0 0 40px hsl(48 100% 56% / 0.2), inset 0 1px 0 hsl(0 0% 100% / 0.1);
+  }
+  .tilt-card::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    background: linear-gradient(135deg, hsl(0 0% 100% / 0.08), transparent 50%);
+    opacity: 0;
+    transition: opacity 500ms ease;
+    pointer-events: none;
+  }
+  .tilt-card:hover::before {
+    opacity: 1;
+  }
+
+  /* Typing caret */
+  .caret {
+    display: inline-block;
+    width: 2px;
+    height: 1em;
+    background: hsl(var(--yellow));
+    margin-left: 4px;
+    vertical-align: -2px;
+    animation: blink 1s steps(1) infinite;
+  }
+}
+
+@layer utilities {
+  .scroll-mt-nav { scroll-margin-top: 6rem; }
+}
+
+@keyframes blink {
+  50% { opacity: 0; }
+}
+
+@keyframes float-slow {
+  0%, 100% { transform: translateY(0) translateX(0); }
+  50% { transform: translateY(-20px) translateX(10px); }
+}
+@keyframes float-slower {
+  0%, 100% { transform: translateY(0) translateX(0); }
+  50% { transform: translateY(15px) translateX(-15px); }
+}
+
+.float-slow { animation: float-slow 8s ease-in-out infinite; }
+.float-slower { animation: float-slower 11s ease-in-out infinite; }
+
+@keyframes pulse-dot {
+  0%, 100% { opacity: 1; box-shadow: 0 0 0 0 hsl(48 100% 56% / 0.6); }
+  50% { opacity: 0.6; box-shadow: 0 0 0 8px hsl(48 100% 56% / 0); }
+}
+.pulse-dot { animation: pulse-dot 2s ease-out infinite; }
