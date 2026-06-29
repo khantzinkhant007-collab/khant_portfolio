@@ -110,7 +110,7 @@ export function CuteRobot() {
         transition={{ duration: 0.25, ease: "easeOut" }}
         className="absolute -top-10 left-1/2 -translate-x-1/2 whitespace-nowrap glass-strong rounded-full px-3 py-1.5 text-[11px] font-medium text-foreground/90"
       >
-        Hi, I'm KZ-bot 👋
+        こんにちは、案内ボットです
       </motion.div>
 
       {/* Glow */}
@@ -135,8 +135,8 @@ export function CuteRobot() {
           className="drop-shadow-[0_8px_24px_hsl(0_0%_0%/0.6)]"
         >
           {/* Antenna */}
-          <line x1="46" y1="6" x2="46" y2="18" stroke="hsl(48 100% 56%)" strokeWidth="2" strokeLinecap="round" />
-          <circle cx="46" cy="5" r="3.5" fill="hsl(48 100% 56%)">
+          <line x1="46" y1="6" x2="46" y2="18" stroke="hsl(0 0% 100%)" strokeWidth="2" strokeLinecap="round" />
+          <circle cx="46" cy="5" r="3.5" fill="hsl(0 0% 100%)">
             <animate attributeName="r" values="3;4.2;3" dur="1.6s" repeatCount="indefinite" />
             <animate attributeName="opacity" values="1;0.6;1" dur="1.6s" repeatCount="indefinite" />
           </circle>
@@ -156,8 +156,8 @@ export function CuteRobot() {
           <rect x="14" y="18" width="64" height="22" rx="16" fill="hsl(0 0% 100% / 0.06)" />
 
           {/* Cheek lights */}
-          <circle cx="20" cy="50" r="2" fill="hsl(48 100% 56%)" opacity="0.85" />
-          <circle cx="72" cy="50" r="2" fill="hsl(48 100% 56%)" opacity="0.85" />
+          <circle cx="20" cy="50" r="2" fill="hsl(0 0% 100%)" opacity="0.85" />
+          <circle cx="72" cy="50" r="2" fill="hsl(0 0% 100%)" opacity="0.85" />
 
           {/* Eyes - glass sockets */}
           <g>
@@ -167,12 +167,12 @@ export function CuteRobot() {
 
           {/* Pupils (translate via framer-motion) */}
           <motion.g style={{ x: pupilX, y: pupilY }}>
-            <circle cx="33" cy="42" r={blink ? 0.4 : 3.6} fill="hsl(48 100% 60%)">
+            <circle cx="33" cy="42" r={blink ? 0.4 : 3.6} fill="hsl(0 0% 100%)">
               {!blink && (
                 <animate attributeName="opacity" values="1;0.85;1" dur="2s" repeatCount="indefinite" />
               )}
             </circle>
-            <circle cx="59" cy="42" r={blink ? 0.4 : 3.6} fill="hsl(48 100% 60%)" />
+            <circle cx="59" cy="42" r={blink ? 0.4 : 3.6} fill="hsl(0 0% 100%)" />
             {/* Sparkle */}
             <circle cx="34.5" cy="40.5" r="1" fill="white" opacity="0.9" />
             <circle cx="60.5" cy="40.5" r="1" fill="white" opacity="0.9" />
@@ -189,7 +189,7 @@ export function CuteRobot() {
           {/* Mouth */}
           <motion.path
             d={hover ? "M36 60 Q46 68 56 60" : "M38 60 Q46 64 54 60"}
-            stroke="hsl(48 100% 56%)"
+            stroke="hsl(0 0% 100%)"
             strokeWidth="2"
             strokeLinecap="round"
             fill="none"
@@ -210,7 +210,7 @@ export function CuteRobot() {
             fill="hsl(0 0% 100% / 0.08)"
             stroke="hsl(0 0% 100% / 0.2)"
           />
-          <circle cx="46" cy="90" r="4" fill="hsl(48 100% 56%)" opacity="0.9">
+          <circle cx="46" cy="90" r="4" fill="hsl(0 0% 100%)" opacity="0.9">
             <animate attributeName="opacity" values="0.9;0.4;0.9" dur="2s" repeatCount="indefinite" />
           </circle>
 

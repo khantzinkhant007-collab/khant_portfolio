@@ -26,10 +26,8 @@ import {
   Magnetic,
   Marquee,
   ScrollProgress,
-  TiltCard,
 } from "@/components/FancyFx";
 import { CuteRobot } from "@/components/CuteRobot";
-import { motion } from "framer-motion";
 
 /* ---------- Reusable Reveal Wrapper ---------- */
 function Reveal({
@@ -66,11 +64,11 @@ function Nav() {
   }, []);
 
   const links = [
-    { href: "#about", label: "About" },
-    { href: "#skills", label: "Skills" },
-    { href: "#projects", label: "Projects" },
-    { href: "#goals", label: "Goals" },
-    { href: "#contact", label: "Contact" },
+    { href: "#about", label: "自己紹介" },
+    { href: "#skills", label: "スキル" },
+    { href: "#projects", label: "制作物" },
+    { href: "#goals", label: "目標" },
+    { href: "#contact", label: "連絡" },
   ];
 
   return (
@@ -86,7 +84,7 @@ function Nav() {
             <span className="relative inline-flex h-2 w-2 rounded-full bg-yellow" />
           </span>
           <span className="font-semibold text-sm tracking-tight">
-            KZ<span className="text-yellow">.dev</span>
+            ポート<span className="text-yellow">フォリオ</span>
           </span>
         </a>
         <div className="hidden md:flex items-center gap-1">
@@ -102,9 +100,9 @@ function Nav() {
         </div>
         <a
           href="#contact"
-          className="hidden sm:inline-flex items-center gap-1.5 text-xs font-medium px-3 py-1.5 rounded-full bg-yellow text-primary-foreground hover:shadow-[0_0_24px_hsl(48_100%_56%/0.5)] transition-all hover:-translate-y-0.5"
+          className="hidden sm:inline-flex items-center gap-1.5 text-xs font-medium px-3 py-1.5 rounded-full bg-yellow text-primary-foreground hover:shadow-[0_0_24px_hsl(0_0%_100%/0.35)] transition-all hover:-translate-y-0.5"
         >
-          Hire Me
+          採用相談
         </a>
       </nav>
     </header>
@@ -130,29 +128,29 @@ function Hero() {
           <div className="lg:col-span-7 animate-fade-in-up">
             <div className="inline-flex items-center gap-2 glass rounded-full px-3 py-1 text-xs text-muted-foreground mb-6">
               <span className="h-1.5 w-1.5 rounded-full bg-yellow pulse-dot" />
-              Open to internships & part-time roles
+              インターン・アルバイト募集中
             </div>
 
             <h1 className="text-5xl sm:text-6xl lg:text-7xl font-semibold tracking-tight leading-[1.05]">
-              Khant <span className="text-gradient-yellow">Zin</span>
+              カント <span className="text-gradient-yellow">ジン</span>
             </h1>
 
             <p className="mt-4 text-lg sm:text-xl text-muted-foreground">
-              IT Student in Japan / Full Stack Engineer in Progress
+              日本のアイティー学生 / フルスタックエンジニアを目指しています
             </p>
 
             <p className="mt-6 max-w-xl text-base sm:text-lg text-foreground/80 leading-relaxed">
-              Building practical web apps with PHP, Laravel, JavaScript, React, MySQL, and Git.
+              ピーエイチピー、ララベル、ジャバスクリプト、リアクト、マイエスキューエル、ギットを使って、実用的なウェブアプリを制作しています。
             </p>
 
             <div className="mt-6 text-base sm:text-lg min-h-[2rem]">
-              <span className="text-muted-foreground">Currently: </span>
+              <span className="text-muted-foreground">現在: </span>
               <TypingText
                 words={[
-                  "PHP / Laravel Learner",
-                  "Web App Builder",
-                  "Full Stack Engineer in Progress",
-                  "AI-Assisted Development Learner",
+                  "ピーエイチピー / ララベルを学習中",
+                  "ウェブアプリ制作中",
+                  "フルスタックエンジニアを目指しています",
+                  "AIを活用した開発を学習中",
                 ]}
               />
             </div>
@@ -163,7 +161,7 @@ function Hero() {
                   href="#projects"
                   className="inline-flex items-center gap-2 px-5 py-3 rounded-full bg-yellow text-primary-foreground font-medium yellow-glow-hover yellow-glow"
                 >
-                  View Projects <ArrowUpRight className="h-4 w-4" />
+                  制作物を見る <ArrowUpRight className="h-4 w-4" />
                 </a>
               </Magnetic>
               <Magnetic>
@@ -171,7 +169,7 @@ function Hero() {
                   href="#contact"
                   className="inline-flex items-center gap-2 px-5 py-3 rounded-full glass yellow-glow-hover font-medium"
                 >
-                  Contact Me
+                  連絡する
                 </a>
               </Magnetic>
               <Magnetic>
@@ -181,15 +179,15 @@ function Hero() {
                   rel="noreferrer"
                   className="inline-flex items-center gap-2 px-5 py-3 rounded-full glass yellow-glow-hover font-medium"
                 >
-                  <Github className="h-4 w-4" /> GitHub
+                  <Github className="h-4 w-4" /> ギットハブ
                 </a>
               </Magnetic>
             </div>
           </div>
 
-          {/* Code Card */}
+          {/* Profile Photo */}
           <div className="lg:col-span-5 animate-scale-in" style={{ animationDelay: "200ms" }}>
-            <CodeCard />
+            <ProfilePhoto />
           </div>
         </div>
       </div>
@@ -197,64 +195,43 @@ function Hero() {
   );
 }
 
-function CodeCard() {
+function ProfilePhoto() {
+  const [photoLoaded, setPhotoLoaded] = useState(true);
+
   return (
-    <TiltCard className="relative" max={10}>
+    <div className="relative mx-auto w-full max-w-[360px]">
       <div className="absolute -inset-6 bg-yellow/20 blur-3xl rounded-full opacity-50 -z-10" />
-      <div className="glass-strong rounded-3xl p-1 shadow-[0_30px_80px_hsl(0_0%_0%/0.6)] relative overflow-hidden">
-        <div className="rounded-[1.4rem] bg-black/60 backdrop-blur-xl">
-          <div className="flex items-center gap-1.5 px-4 py-3 border-b border-white/5">
-            <span className="h-2.5 w-2.5 rounded-full bg-red-500/70" />
-            <span className="h-2.5 w-2.5 rounded-full bg-yellow/70" />
-            <span className="h-2.5 w-2.5 rounded-full bg-green-500/70" />
-            <span className="ml-3 text-[11px] text-muted-foreground font-mono">khant.ts</span>
-          </div>
-          <pre className="px-5 py-5 text-[13px] sm:text-sm leading-relaxed font-mono overflow-x-auto">
-            <code>
-              <span className="text-yellow">const</span>{" "}
-              <span className="text-white">khant</span>{" "}
-              <span className="text-muted-foreground">=</span>{" "}
-              <span className="text-muted-foreground">{"{"}</span>
-              {"\n  "}
-              <span className="text-white/80">location</span>
-              <span className="text-muted-foreground">:</span>{" "}
-              <span className="text-yellow/90">"Osaka, Japan"</span>
-              <span className="text-muted-foreground">,</span>
-              {"\n  "}
-              <span className="text-white/80">goal</span>
-              <span className="text-muted-foreground">:</span>{" "}
-              <span className="text-yellow/90">"Full Stack Engineer"</span>
-              <span className="text-muted-foreground">,</span>
-              {"\n  "}
-              <span className="text-white/80">stack</span>
-              <span className="text-muted-foreground">:</span>{" "}
-              <span className="text-muted-foreground">[</span>
-              <span className="text-yellow/90">"PHP"</span>
-              <span className="text-muted-foreground">, </span>
-              <span className="text-yellow/90">"Laravel"</span>
-              <span className="text-muted-foreground">, </span>
-              <span className="text-yellow/90">"React"</span>
-              <span className="text-muted-foreground">, </span>
-              <span className="text-yellow/90">"MySQL"</span>
-              <span className="text-muted-foreground">]</span>
-              {"\n"}
-              <span className="text-muted-foreground">{"};"}</span>
-            </code>
-          </pre>
+      <div className="glass-strong rounded-[2rem] p-3 shadow-[0_30px_80px_hsl(0_0%_0%/0.6)]">
+        <div className="relative aspect-square overflow-hidden rounded-[1.5rem] bg-black/60">
+          {photoLoaded ? (
+            <img
+              src="/profile-photo.jpg"
+              alt="カント ジンのプロフィール写真"
+              className="h-full w-full object-cover"
+              onError={() => setPhotoLoaded(false)}
+            />
+          ) : (
+            <div className="flex h-full w-full flex-col items-center justify-center px-8 text-center">
+              <p className="text-lg font-semibold">写真を追加</p>
+              <p className="mt-2 text-sm text-muted-foreground">
+                写真ファイルを追加すると、ここに角丸で表示されます。
+              </p>
+            </div>
+          )}
         </div>
       </div>
-    </TiltCard>
+    </div>
   );
 }
 
 function FloatingLabels() {
   const labels = [
-    { name: "PHP", className: "top-[18%] left-[6%]", delay: "0s" },
-    { name: "Laravel", className: "top-[8%] right-[20%]", delay: "1s" },
-    { name: "React", className: "top-[60%] left-[3%]", delay: "2s" },
-    { name: "MySQL", className: "bottom-[15%] right-[8%]", delay: "1.5s" },
-    { name: "Git", className: "top-[45%] right-[4%]", delay: "0.5s" },
-    { name: "AI Tools", className: "bottom-[8%] left-[14%]", delay: "2.5s" },
+    { name: "ピーエイチピー", className: "top-[18%] left-[6%]", delay: "0s" },
+    { name: "ララベル", className: "top-[8%] right-[20%]", delay: "1s" },
+    { name: "リアクト", className: "top-[60%] left-[3%]", delay: "2s" },
+    { name: "マイエスキューエル", className: "bottom-[15%] right-[8%]", delay: "1.5s" },
+    { name: "ギット", className: "top-[45%] right-[4%]", delay: "0.5s" },
+    { name: "AIツール", className: "bottom-[8%] left-[14%]", delay: "2.5s" },
   ];
   return (
     <div className="pointer-events-none absolute inset-0 -z-[5] hidden md:block">
@@ -283,17 +260,8 @@ function SectionTitle({ eyebrow, title }: { eyebrow?: string; title: string }) {
             {eyebrow}
           </div>
         )}
-        <h2 className="text-4xl sm:text-5xl font-semibold tracking-tight">
-          {title.split(" ").map((w, i, arr) =>
-            i === arr.length - 1 ? (
-              <span key={i} className="text-gradient-yellow">
-                {" "}
-                {w}
-              </span>
-            ) : (
-              <span key={i}>{i === 0 ? w : ` ${w}`}</span>
-            )
-          )}
+        <h2 className="text-4xl sm:text-5xl font-semibold tracking-tight text-gradient-yellow">
+          {title}
         </h2>
       </div>
     </Reveal>
@@ -303,24 +271,22 @@ function SectionTitle({ eyebrow, title }: { eyebrow?: string; title: string }) {
 /* ---------- About ---------- */
 function About() {
   const stats = [
-    { icon: MapPin, label: "Osaka, Japan" },
-    { icon: GraduationCap, label: "IT Student" },
-    { icon: Languages, label: "JLPT N2 Japanese" },
-    { icon: Briefcase, label: "Open to Internship / Part-time" },
+    { icon: MapPin, label: "大阪、日本" },
+    { icon: GraduationCap, label: "アイティー学生" },
+    { icon: Languages, label: "日本語 JLPT N2レベル" },
+    { icon: Briefcase, label: "インターン・アルバイト希望" },
   ];
   return (
     <section id="about" className="py-24 sm:py-32 scroll-mt-nav">
       <div className="container max-w-5xl">
-        <SectionTitle eyebrow="About" title="About Me" />
+        <SectionTitle eyebrow="自己紹介" title="自己紹介" />
         <Reveal>
           <div className="glass-strong rounded-3xl p-8 sm:p-10 yellow-glow-hover">
             <p className="text-lg leading-relaxed text-foreground/85">
-              I'm Khant Zin, an IT student based in Osaka, Japan. I'm learning web development
-              through school projects and personal projects, mainly using PHP, Laravel,
-              JavaScript, React, MySQL, and Git. I enjoy building things that actually work,
-              fixing problems step by step, and improving through feedback. I'm currently
-              looking for internship or part-time developer opportunities where I can grow
-              through real team development and code review.
+              カント ジンです。大阪を拠点に学んでいるアイティー学生です。学校課題と個人制作を通して、
+              ピーエイチピー、ララベル、ジャバスクリプト、リアクト、マイエスキューエル、ギットを中心にウェブ開発を学習しています。
+              実際に動くものを作ること、問題を一つずつ直すこと、フィードバックから改善することが好きです。
+              現在は、実務のチーム開発やコードレビューを通して成長できるインターン・アルバイトの機会を探しています。
             </p>
           </div>
         </Reveal>
@@ -345,45 +311,45 @@ function Skills() {
   const groups = [
     {
       icon: Code2,
-      title: "Frontend",
-      note: "used in personal projects",
-      items: ["HTML", "CSS", "JavaScript", "React"],
+      title: "フロントエンド",
+      note: "個人制作で使用",
+      items: ["エイチティーエムエル", "シーエスエス", "ジャバスクリプト", "リアクト"],
     },
     {
       icon: Layers,
-      title: "Backend",
-      items: ["PHP", "Laravel", "REST API basics"],
+      title: "バックエンド",
+      items: ["ピーエイチピー", "ララベル", "レストエーピーアイ基礎"],
     },
     {
       icon: Database,
-      title: "Database",
-      items: ["MySQL", "SQL basics"],
+      title: "データベース",
+      items: ["マイエスキューエル", "エスキューエル基礎"],
     },
     {
       icon: Wrench,
-      title: "Tools",
-      items: ["Git", "GitHub", "VS Code", "Postman"],
+      title: "ツール",
+      items: ["ギット", "ギットハブ", "ブイエスコード", "ポストマン"],
     },
     {
       icon: BookOpen,
-      title: "Learning Now",
-      items: ["TypeScript", "Docker", "AWS", "Linux / UNIX"],
+      title: "現在学習中",
+      items: ["タイプスクリプト", "ドッカー", "エーダブリューエス", "リナックス / ユニックス"],
     },
     {
       icon: Sparkles,
-      title: "AI Tools",
-      items: ["ChatGPT", "Codex", "Cursor"],
+      title: "AIツール",
+      items: ["チャットGPT", "コーデックス", "カーソル"],
     },
   ];
 
   return (
     <section id="skills" className="py-24 sm:py-32 scroll-mt-nav">
       <div className="container">
-        <SectionTitle eyebrow="Skills" title="Tech Stack" />
+        <SectionTitle eyebrow="スキル" title="技術スタック" />
         <Reveal>
           <div className="mb-10 space-y-2">
-            <Marquee items={["PHP", "Laravel", "React", "TypeScript", "MySQL", "JavaScript", "Git", "Tailwind", "Node.js", "REST API", "Docker", "AWS"]} />
-            <Marquee reverse items={["HTML", "CSS", "Blade", "Postman", "VS Code", "Linux", "Shell", "ChatGPT", "Cursor", "Codex", "GitHub", "SQL"]} />
+            <Marquee items={["ピーエイチピー", "ララベル", "リアクト", "タイプスクリプト", "マイエスキューエル", "ジャバスクリプト", "ギット", "テイルウィンド", "ノード", "レストエーピーアイ", "ドッカー", "エーダブリューエス"]} />
+            <Marquee reverse items={["エイチティーエムエル", "シーエスエス", "ブレード", "ポストマン", "ブイエスコード", "リナックス", "シェル", "チャットジーピーティー", "カーソル", "コーデックス", "ギットハブ", "エスキューエル"]} />
           </div>
         </Reveal>
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
@@ -427,19 +393,19 @@ function Skills() {
 /* ---------- Featured Project ---------- */
 function FeaturedProject() {
   const features = [
-    "Login and user authentication",
-    "Saving goals and progress tracking",
-    "Deposit and withdrawal records",
-    "Active goal dashboard",
-    "Pet mood system based on saving progress",
-    "Receipt scanning / OCR concept",
-    "Charts for saving and spending analysis",
+    "ログインとユーザー認証",
+    "貯金目標と進捗管理",
+    "入金・出金記録",
+    "進行中の目標ダッシュボード",
+    "貯金進捗に合わせたペットの気分システム",
+    "レシート読み取り / OCRの構想",
+    "貯金と支出分析のチャート",
   ];
-  const stack = ["React", "PHP", "Laravel/PHP API", "MySQL", "JavaScript", "Git"];
+  const stack = ["リアクト", "ピーエイチピー", "ララベル / ピーエイチピーエーピーアイ", "マイエスキューエル", "ジャバスクリプト", "ギット"];
   return (
     <section id="projects" className="py-24 sm:py-32 scroll-mt-nav">
       <div className="container">
-        <SectionTitle eyebrow="Featured" title="Featured Project" />
+        <SectionTitle eyebrow="注目" title="代表制作" />
 
         <Reveal>
           <div className="glass-strong rounded-3xl overflow-hidden relative">
@@ -447,19 +413,18 @@ function FeaturedProject() {
             <div className="grid lg:grid-cols-2 gap-0">
               <div className="p-8 sm:p-10 relative">
                 <div className="inline-flex items-center gap-2 glass-yellow rounded-full px-3 py-1 text-xs text-yellow mb-4">
-                  <Sparkles className="h-3 w-3" /> Personal Project
+                  <Sparkles className="h-3 w-3" /> 個人制作
                 </div>
                 <h3 className="text-3xl sm:text-4xl font-semibold tracking-tight">
-                  Pet Saver
+                  ペットセーバー
                 </h3>
                 <p className="text-yellow text-sm font-medium mt-1">
-                  Gamified Savings & Expense Tracker
+                  ゲーム感覚の貯金・支出管理アプリ
                 </p>
                 <p className="mt-5 text-foreground/80 leading-relaxed">
-                  Pet Saver is a personal web app project for managing saving goals and daily
-                  expenses. The idea is simple: saving money becomes more motivating when a pet
-                  character reacts to your progress. The project helped me practice frontend,
-                  backend, database design, authentication, and API connection.
+                  ペットセーバーは、貯金目標と日々の支出を管理するための個人制作ウェブアプリです。
+                  ペットキャラクターが貯金の進捗に反応することで、貯金を楽しく続けられるようにすることを目指しました。
+                  この制作を通して、フロントエンド、バックエンド、データベース設計、認証、API連携を練習しました。
                 </p>
 
                 <div className="flex flex-wrap gap-2 mt-6">
@@ -484,23 +449,23 @@ function FeaturedProject() {
                     href="#"
                     className="inline-flex items-center gap-1.5 text-xs font-medium px-4 py-2 rounded-full bg-yellow text-primary-foreground yellow-glow-hover"
                   >
-                    <Github className="h-3.5 w-3.5" /> GitHub Repo
+                    <Github className="h-3.5 w-3.5" /> ギットハブリポジトリ
                   </a>
                   <a
                     href="#"
                     className="inline-flex items-center gap-1.5 text-xs font-medium px-4 py-2 rounded-full glass yellow-glow-hover"
                   >
-                    <ExternalLink className="h-3.5 w-3.5" /> Live Demo
+                    <ExternalLink className="h-3.5 w-3.5" /> デモ
                   </a>
                   <a
                     href="#"
                     className="inline-flex items-center gap-1.5 text-xs font-medium px-4 py-2 rounded-full glass yellow-glow-hover"
                   >
-                    Case Study
+                    制作メモ
                   </a>
                 </div>
                 <p className="mt-3 text-[11px] text-muted-foreground">
-                  Replace placeholder links with real URLs when ready.
+                  準備できたら、仮リンクを実際のURLに差し替えます。
                 </p>
               </div>
 
@@ -512,9 +477,9 @@ function FeaturedProject() {
                     <div className="h-16 w-16 mx-auto rounded-2xl glass-yellow flex items-center justify-center mb-4">
                       <Sparkles className="h-7 w-7 text-yellow" />
                     </div>
-                    <p className="text-sm font-medium">Add Pet Saver screenshots here</p>
+                    <p className="text-sm font-medium">ペットセーバーのスクリーンショットを追加</p>
                     <p className="text-xs text-muted-foreground mt-1">
-                      Drop product mockups, UI shots, or a short demo video.
+                      画面写真、モックアップ、短いデモ動画をここに配置できます。
                     </p>
                   </div>
                 </div>
@@ -531,25 +496,25 @@ function FeaturedProject() {
 function OtherProjects() {
   const projects = [
     {
-      title: "Laravel School Projects",
-      desc: "CRUD web applications using Laravel, Blade, MySQL, validation, routing, and basic authentication concepts.",
-      tags: ["Laravel", "Blade", "MySQL"],
+      title: "ララベル学校課題",
+      desc: "ララベル、ブレード、マイエスキューエル、バリデーション、ルーティング、基本的な認証の考え方を使った登録・表示・更新・削除アプリです。",
+      tags: ["ララベル", "ブレード", "マイエスキューエル"],
     },
     {
-      title: "PHP / MySQL Practice",
-      desc: "Database-driven applications with SQL, form handling, CRUD operations, and backend logic.",
-      tags: ["PHP", "MySQL", "SQL"],
+      title: "ピーエイチピー / マイエスキューエル練習",
+      desc: "エスキューエル、フォーム処理、登録・表示・更新・削除の操作、バックエンドロジックを使ったデータベース連携アプリです。",
+      tags: ["ピーエイチピー", "マイエスキューエル", "エスキューエル"],
     },
     {
-      title: "Linux / Cisco Practice",
-      desc: "Linux command line, shell basics, networking fundamentals, and server concepts learned through school tasks.",
-      tags: ["Linux", "Shell", "Networking"],
+      title: "リナックス / シスコ練習",
+      desc: "学校課題を通して、リナックスコマンド、シェル基礎、ネットワーク基礎、サーバーの考え方を学びました。",
+      tags: ["リナックス", "シェル", "ネットワーク"],
     },
   ];
   return (
     <section className="pb-24 sm:pb-32">
       <div className="container">
-        <SectionTitle eyebrow="More" title="Other Projects" />
+        <SectionTitle eyebrow="その他" title="その他の制作" />
         <div className="grid md:grid-cols-3 gap-5">
           {projects.map((p, i) => (
             <Reveal key={p.title} delay={i * 100}>
@@ -576,33 +541,32 @@ function OtherProjects() {
 function Goals() {
   const steps = [
     {
-      tag: "Now",
-      text: "Improve PHP, Laravel, JavaScript, MySQL, Git, and portfolio projects.",
+      tag: "現在",
+      text: "ピーエイチピー、ララベル、ジャバスクリプト、マイエスキューエル、ギット、ポートフォリオ制作をさらに改善しています。",
     },
     {
-      tag: "Next",
-      text: "Learn TypeScript, Docker, AWS, and team development workflow.",
+      tag: "次",
+      text: "タイプスクリプト、ドッカー、エーダブリューエス、チーム開発の流れを学習します。",
     },
     {
-      tag: "Internship",
-      text: "Join a student-friendly web development internship or part-time developer role in Osaka or remote.",
+      tag: "インターン",
+      text: "大阪またはリモートで、学生でも参加しやすいウェブ開発インターン・アルバイトに挑戦したいです。",
     },
     {
-      tag: "Future",
-      text: "Become a full-stack engineer who can work across frontend, backend, database, and cloud infrastructure.",
+      tag: "将来",
+      text: "フロントエンド、バックエンド、データベース、クラウドまで理解できるフルスタックエンジニアを目指します。",
     },
   ];
   const { ref, visible } = useReveal<HTMLDivElement>();
   return (
     <section id="goals" className="py-24 sm:py-32 scroll-mt-nav">
       <div className="container max-w-4xl">
-        <SectionTitle eyebrow="Roadmap" title="Career Goals" />
+        <SectionTitle eyebrow="ロードマップ" title="キャリア目標" />
 
         <Reveal>
           <p className="text-center text-foreground/80 max-w-2xl mx-auto leading-relaxed mb-14">
-            My goal is to grow into a full-stack engineer who can build useful products and
-            understand the whole development flow. I want to learn from real projects, code
-            reviews, and team development, while continuing to improve my technical foundation.
+            目標は、役に立つプロダクトを作り、開発全体の流れを理解できるフルスタックエンジニアになることです。
+            実際のプロジェクト、コードレビュー、チーム開発から学びながら、技術の基礎を継続して伸ばしていきます。
           </p>
         </Reveal>
 
@@ -620,7 +584,7 @@ function Goals() {
               <Reveal key={s.tag} delay={i * 150}>
                 <div className="relative">
                   {/* dot */}
-                  <span className="absolute -left-[26px] sm:-left-[34px] top-5 h-3 w-3 rounded-full bg-yellow shadow-[0_0_16px_hsl(48_100%_56%/0.7)]" />
+                  <span className="absolute -left-[26px] sm:-left-[34px] top-5 h-3 w-3 rounded-full bg-yellow shadow-[0_0_16px_hsl(0_0%_100%/0.45)]" />
                   <div className="glass rounded-2xl p-5 sm:p-6 yellow-glow-hover">
                     <div className="text-[11px] uppercase tracking-[0.2em] text-yellow font-medium">
                       {s.tag}
@@ -640,19 +604,19 @@ function Goals() {
 /* ---------- Recruiter Profile ---------- */
 function Recruiter() {
   const rows: Array<[string, string]> = [
-    ["Name", "Khant Zin"],
-    ["Location", "Osaka, Japan"],
-    ["Japanese", "JLPT N2 level"],
-    ["Status", "IT Student"],
-    ["Looking for", "Internship / Part-time Web Developer Role"],
-    ["Interested roles", "Web Engineer, PHP/Laravel Engineer, Full Stack Engineer, Frontend Engineer"],
-    ["Strengths", "Fast learner, practical project experience, builder mindset, AI tool user, motivated to improve"],
-    ["Availability", "After school / student-friendly schedule"],
+    ["名前", "カント ジン"],
+    ["所在地", "大阪、日本"],
+    ["日本語", "JLPT N2レベル"],
+    ["現在", "アイティー学生"],
+    ["希望", "インターン / アルバイト ウェブ開発職"],
+    ["興味のある職種", "ウェブエンジニア、ピーエイチピー / ララベルエンジニア、フルスタックエンジニア、フロントエンドエンジニア"],
+    ["強み", "学習が早い、実践的な制作経験、作る姿勢、AIツール活用、改善意欲"],
+    ["勤務可能時間", "放課後 / 学生に合うスケジュール"],
   ];
   return (
     <section className="py-24 sm:py-32">
       <div className="container max-w-4xl">
-        <SectionTitle eyebrow="For Recruiters" title="Profile for Recruiters" />
+        <SectionTitle eyebrow="採用担当者向け" title="採用向けプロフィール" />
         <Reveal>
           <div className="glass-strong rounded-3xl p-8 sm:p-10 yellow-glow-hover relative overflow-hidden">
             <div className="absolute top-0 right-0 h-40 w-40 rounded-full bg-yellow/15 blur-3xl pointer-events-none" />
@@ -671,13 +635,13 @@ function Recruiter() {
                 href="#"
                 className="inline-flex items-center gap-1.5 text-xs font-medium px-4 py-2 rounded-full glass yellow-glow-hover"
               >
-                Resume PDF (placeholder)
+                履歴書PDF（準備中）
               </a>
               <a
                 href="#"
                 className="inline-flex items-center gap-1.5 text-xs font-medium px-4 py-2 rounded-full glass yellow-glow-hover"
               >
-                Profile photo (placeholder)
+                プロフィール写真（準備中）
               </a>
             </div>
           </div>
@@ -696,20 +660,20 @@ function Contact() {
     try {
       await navigator.clipboard.writeText(email);
       setCopied(true);
-      toast.success("Email copied to clipboard");
+      toast.success("メールアドレスをコピーしました");
       setTimeout(() => setCopied(false), 2000);
     } catch {
-      toast.error("Could not copy");
+      toast.error("コピーできませんでした");
     }
   };
 
   return (
     <section id="contact" className="py-24 sm:py-32 scroll-mt-nav">
       <div className="container max-w-3xl text-center">
-        <SectionTitle eyebrow="Get in Touch" title="Contact" />
+        <SectionTitle eyebrow="お問い合わせ" title="連絡先" />
         <Reveal>
           <p className="text-foreground/80 text-lg leading-relaxed">
-            I'm open to internships, part-time developer roles, and collaboration opportunities.
+            インターン、アルバイト開発職、共同制作の機会を探しています。
           </p>
         </Reveal>
 
@@ -731,11 +695,11 @@ function Contact() {
               >
                 {copied ? (
                   <>
-                    <Check className="h-3 w-3" /> Copied
+                    <Check className="h-3 w-3" /> コピー済み
                   </>
                 ) : (
                   <>
-                    <Copy className="h-3 w-3" /> Copy
+                    <Copy className="h-3 w-3" /> コピー
                   </>
                 )}
               </button>
@@ -748,19 +712,19 @@ function Contact() {
                 rel="noreferrer"
                 className="inline-flex items-center gap-1.5 text-sm px-4 py-2 rounded-full glass yellow-glow-hover"
               >
-                <Github className="h-4 w-4" /> GitHub
+                <Github className="h-4 w-4" /> ギットハブ
               </a>
               <a
                 href="#"
                 className="inline-flex items-center gap-1.5 text-sm px-4 py-2 rounded-full glass yellow-glow-hover"
               >
-                Wantedly (placeholder)
+                ウォンテッドリー（準備中）
               </a>
               <a
                 href="#"
                 className="inline-flex items-center gap-1.5 text-sm px-4 py-2 rounded-full glass yellow-glow-hover"
               >
-                LinkedIn (placeholder)
+                リンクトイン（準備中）
               </a>
             </div>
 
@@ -769,7 +733,7 @@ function Contact() {
                 href={`mailto:${email}`}
                 className="inline-flex items-center gap-2 px-7 py-3.5 rounded-full bg-yellow text-primary-foreground font-semibold yellow-glow-hover yellow-glow"
               >
-                Let's Talk <ArrowUpRight className="h-4 w-4" />
+                相談する <ArrowUpRight className="h-4 w-4" />
               </a>
             </div>
           </div>
@@ -783,11 +747,11 @@ function Contact() {
 function Footer() {
   return (
     <footer className="relative py-10">
-      <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-yellow/60 to-transparent shadow-[0_0_16px_hsl(48_100%_56%/0.5)]" />
+      <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-yellow/60 to-transparent shadow-[0_0_16px_hsl(0_0%_100%/0.35)]" />
       <div className="container text-center text-sm text-muted-foreground">
-        <p>Designed for Khant Zin — Full Stack Engineer in Progress.</p>
+        <p>カント ジンのために制作 / フルスタックエンジニアを目指しています。</p>
         <p className="mt-1 text-[11px]">
-          © {new Date().getFullYear()} KZ.dev
+          © {new Date().getFullYear()} ポートフォリオ
         </p>
       </div>
     </footer>

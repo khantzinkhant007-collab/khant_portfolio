@@ -8,7 +8,7 @@ export function ScrollProgress() {
   return (
     <motion.div
       style={{ scaleX, transformOrigin: "0% 50%" }}
-      className="fixed top-0 left-0 right-0 h-[2px] z-[100] bg-gradient-to-r from-yellow via-yellow-soft to-yellow shadow-[0_0_12px_hsl(48_100%_56%/0.7)]"
+      className="fixed top-0 left-0 right-0 h-[2px] z-[100] bg-gradient-to-r from-yellow via-yellow-soft to-yellow shadow-[0_0_12px_hsl(0_0%_100%/0.45)]"
     />
   );
 }
@@ -33,7 +33,7 @@ export function CursorSpotlight() {
   const bg = useTransform(
     [sx, sy],
     ([lx, ly]: number[]) =>
-      `radial-gradient(420px circle at ${lx}px ${ly}px, hsl(48 100% 56% / 0.12), transparent 60%)`
+      `radial-gradient(420px circle at ${lx}px ${ly}px, hsl(0 0% 100% / 0.1), transparent 60%)`
   );
 
   return (
@@ -169,7 +169,7 @@ export function TiltCard({
         className="pointer-events-none absolute inset-0 rounded-[inherit] transition-opacity duration-300"
         style={{
           opacity: glow.on ? 1 : 0,
-          background: `radial-gradient(400px circle at ${glow.x}% ${glow.y}%, hsl(48 100% 56% / 0.18), transparent 50%)`,
+          background: `radial-gradient(400px circle at ${glow.x}% ${glow.y}%, hsl(0 0% 100% / 0.14), transparent 50%)`,
         }}
       />
     </motion.div>
