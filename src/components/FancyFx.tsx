@@ -37,8 +37,6 @@ export function CursorSpotlight() {
   const ref = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    if (window.matchMedia("(pointer: coarse)").matches) return;
-
     const spot = ref.current;
     if (!spot) return;
 
@@ -48,7 +46,7 @@ export function CursorSpotlight() {
 
     const update = () => {
       frame = 0;
-      spot.style.transform = `translate3d(${x - 240}px, ${y - 240}px, 0)`;
+      spot.style.transform = `translate3d(${x - 280}px, ${y - 280}px, 0)`;
     };
 
     const onMove = (event: MouseEvent) => {
