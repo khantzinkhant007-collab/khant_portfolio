@@ -22,12 +22,12 @@ import { useReveal } from "@/hooks/use-reveal";
 import { toast } from "sonner";
 import {
   Aurora,
-  CursorSpotlight,
   Magnetic,
   Marquee,
   ScrollProgress,
 } from "@/components/FancyFx";
-import { CuteRobot } from "@/components/CuteRobot";
+import petSaverScreenshot from "@/assets/pet-saver-screenshot.png";
+import profilePhotoUrl from "@/assets/profile-photo-optimized.jpg";
 
 /* ---------- Reusable Reveal Wrapper ---------- */
 function Reveal({
@@ -132,7 +132,7 @@ function Hero() {
             </div>
 
             <h1 className="text-5xl sm:text-6xl lg:text-7xl font-semibold tracking-tight leading-[1.05]">
-              カント <span className="text-gradient-yellow">ジン</span>
+              カン <span className="text-gradient-yellow">ゼイン</span>
             </h1>
 
             <p className="mt-4 text-lg sm:text-xl text-muted-foreground">
@@ -174,7 +174,7 @@ function Hero() {
               </Magnetic>
               <Magnetic>
                 <a
-                  href="https://github.com/khantzinkhant007"
+                  href="https://github.com/khantzinkhant007-collab"
                   target="_blank"
                   rel="noreferrer"
                   className="inline-flex items-center gap-2 px-5 py-3 rounded-full glass yellow-glow-hover font-medium"
@@ -205,8 +205,8 @@ function ProfilePhoto() {
         <div className="relative aspect-square overflow-hidden rounded-[1.5rem] bg-black/60">
           {photoLoaded ? (
             <img
-              src="/profile-photo.jpg"
-              alt="カント ジンのプロフィール写真"
+              src={profilePhotoUrl}
+              alt="カンゼインのプロフィール写真"
               className="h-full w-full object-cover"
               onError={() => setPhotoLoaded(false)}
             />
@@ -283,8 +283,8 @@ function About() {
         <Reveal>
           <div className="glass-strong rounded-3xl p-8 sm:p-10 yellow-glow-hover">
             <p className="text-lg leading-relaxed text-foreground/85">
-              カント ジンです。大阪を拠点に学んでいるアイティー学生です。学校課題と個人制作を通して、
-              ピーエイチピー、ララベル、ジャバスクリプト、リアクト、マイエスキューエル、ギットを中心にウェブ開発を学習しています。
+              カンゼインです。大阪のECCコンピューター専門学校にIT開発研究コースの学生です。学校課題と個人制作を通して、
+              PHP、LARAVEL、JS、MySQL、JAVAを中心にIT開発を学習しています。
               実際に動くものを作ること、問題を一つずつ直すこと、フィードバックから改善することが好きです。
               現在は、実務のチーム開発やコードレビューを通して成長できるインターン・アルバイトの機会を探しています。
             </p>
@@ -318,27 +318,27 @@ function Skills() {
     {
       icon: Layers,
       title: "バックエンド",
-      items: ["ピーエイチピー", "ララベル", "レストエーピーアイ基礎"],
+      items: ["PHP", "LARAVEL", "レストエーピーアイ基礎"],
     },
     {
       icon: Database,
       title: "データベース",
-      items: ["マイエスキューエル", "エスキューエル基礎"],
+      items: ["MYSQL"],
     },
     {
       icon: Wrench,
       title: "ツール",
-      items: ["ギット", "ギットハブ", "ブイエスコード", "ポストマン"],
+      items: ["Git", "GitHub"],
     },
     {
       icon: BookOpen,
       title: "現在学習中",
-      items: ["タイプスクリプト", "ドッカー", "エーダブリューエス", "リナックス / ユニックス"],
+      items: ["エーダブリューエス", "リナックス / ユニックス"],
     },
     {
       icon: Sparkles,
       title: "AIツール",
-      items: ["チャットGPT", "コーデックス", "カーソル"],
+      items: ["ChatGPT", "Codex", "Gemini"],
     },
   ];
 
@@ -446,42 +446,38 @@ function FeaturedProject() {
 
                 <div className="flex flex-wrap gap-3 mt-8">
                   <a
-                    href="#"
+                    href="https://github.com/Jack13-Han/pet_saver"
                     className="inline-flex items-center gap-1.5 text-xs font-medium px-4 py-2 rounded-full bg-yellow text-primary-foreground yellow-glow-hover"
                   >
                     <Github className="h-3.5 w-3.5" /> ギットハブリポジトリ
                   </a>
                   <a
-                    href="#"
+                    href="https://petsaver.infy.click/"
                     className="inline-flex items-center gap-1.5 text-xs font-medium px-4 py-2 rounded-full glass yellow-glow-hover"
                   >
                     <ExternalLink className="h-3.5 w-3.5" /> デモ
                   </a>
-                  <a
-                    href="#"
+                  {/* <a
+                    href=""
                     className="inline-flex items-center gap-1.5 text-xs font-medium px-4 py-2 rounded-full glass yellow-glow-hover"
                   >
                     制作メモ
-                  </a>
+                  </a> */}
                 </div>
                 <p className="mt-3 text-[11px] text-muted-foreground">
                   準備できたら、仮リンクを実際のURLに差し替えます。
                 </p>
               </div>
-
               {/* Mockup area */}
               <div className="relative min-h-[360px] lg:min-h-full p-6 sm:p-10 flex items-center justify-center border-t lg:border-t-0 lg:border-l border-white/5">
-                <div className="glass rounded-2xl w-full aspect-[4/3] flex flex-col items-center justify-center text-center p-6 tilt-card relative overflow-hidden">
-                  <div className="absolute inset-0 bg-gradient-to-br from-yellow/10 via-transparent to-transparent" />
-                  <div className="relative">
-                    <div className="h-16 w-16 mx-auto rounded-2xl glass-yellow flex items-center justify-center mb-4">
-                      <Sparkles className="h-7 w-7 text-yellow" />
-                    </div>
-                    <p className="text-sm font-medium">ペットセーバーのスクリーンショットを追加</p>
-                    <p className="text-xs text-muted-foreground mt-1">
-                      画面写真、モックアップ、短いデモ動画をここに配置できます。
-                    </p>
-                  </div>
+                <div className="glass rounded-2xl w-full tilt-card relative overflow-hidden shadow-[0_25px_80px_hsl(0_0%_0%/0.28)]">
+                  <img
+                    src={petSaverScreenshot}
+                    alt="Pet Saver dashboard screenshot"
+                    className="block w-full h-auto"
+                    loading="lazy"
+                  />
+                  <div className="pointer-events-none absolute inset-0 rounded-2xl ring-1 ring-white/10" />
                 </div>
               </div>
             </div>
@@ -707,7 +703,7 @@ function Contact() {
 
             <div className="mt-6 flex flex-wrap justify-center gap-3">
               <a
-                href="https://github.com/khantzinkhant007"
+                href="https://github.com/khantzinkhant007-collab"
                 target="_blank"
                 rel="noreferrer"
                 className="inline-flex items-center gap-1.5 text-sm px-4 py-2 rounded-full glass yellow-glow-hover"
@@ -715,17 +711,17 @@ function Contact() {
                 <Github className="h-4 w-4" /> ギットハブ
               </a>
               <a
-                href="#"
+                href="https://www.wantedly.com/id/khant_zin007"
                 className="inline-flex items-center gap-1.5 text-sm px-4 py-2 rounded-full glass yellow-glow-hover"
               >
-                ウォンテッドリー（準備中）
+                ウォンテッドリー
               </a>
-              <a
+              {/* <a
                 href="#"
                 className="inline-flex items-center gap-1.5 text-sm px-4 py-2 rounded-full glass yellow-glow-hover"
               >
                 リンクトイン（準備中）
-              </a>
+              </a> */}
             </div>
 
             <div className="mt-10">
@@ -764,8 +760,6 @@ const Index = () => {
     <main className="relative">
       <ScrollProgress />
       <Aurora />
-      <CursorSpotlight />
-      <CuteRobot />
       <Nav />
       <Hero />
       <About />

@@ -77,7 +77,7 @@
       radial-gradient(ellipse 80% 50% at 50% -10%, hsl(0 0% 100% / 0.1), transparent),
       radial-gradient(ellipse 60% 40% at 80% 50%, hsl(0 0% 100% / 0.03), transparent),
       radial-gradient(ellipse 60% 40% at 10% 80%, hsl(0 0% 100% / 0.04), transparent);
-    background-attachment: fixed;
+    background-attachment: scroll;
   }
 
   ::selection {
@@ -94,34 +94,73 @@
   /* iOS-like frosted glass */
   .glass {
     background: hsl(0 0% 100% / 0.04);
-    backdrop-filter: blur(24px) saturate(180%);
-    -webkit-backdrop-filter: blur(24px) saturate(180%);
+    backdrop-filter: blur(8px) saturate(140%);
+    -webkit-backdrop-filter: blur(8px) saturate(140%);
     border: 1px solid hsl(0 0% 100% / 0.1);
     box-shadow: var(--shadow-glass);
   }
 
   .glass-strong {
     background: hsl(0 0% 100% / 0.07);
-    backdrop-filter: blur(28px) saturate(200%);
-    -webkit-backdrop-filter: blur(28px) saturate(200%);
+    backdrop-filter: blur(10px) saturate(150%);
+    -webkit-backdrop-filter: blur(10px) saturate(150%);
     border: 1px solid hsl(0 0% 100% / 0.12);
     box-shadow: var(--shadow-glass);
   }
 
   .glass-yellow {
     background: hsl(0 0% 100% / 0.06);
-    backdrop-filter: blur(24px) saturate(180%);
-    -webkit-backdrop-filter: blur(24px) saturate(180%);
+    backdrop-filter: blur(8px) saturate(140%);
+    -webkit-backdrop-filter: blur(8px) saturate(140%);
     border: 1px solid hsl(0 0% 100% / 0.22);
     box-shadow: 0 8px 32px hsl(0 0% 0% / 0.4), inset 0 1px 0 hsl(0 0% 100% / 0.12);
   }
 
   .glass-nav {
     background: hsl(var(--navy) / 0.92);
-    backdrop-filter: blur(28px) saturate(180%);
-    -webkit-backdrop-filter: blur(28px) saturate(180%);
+    backdrop-filter: blur(12px) saturate(150%);
+    -webkit-backdrop-filter: blur(12px) saturate(150%);
     border: 1px solid hsl(222 45% 42% / 0.5);
     box-shadow: 0 10px 36px hsl(0 0% 0% / 0.4), inset 0 1px 0 hsl(0 0% 100% / 0.12);
+  }
+
+  .scroll-progress {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    height: 2px;
+    transform: scaleX(0);
+    transform-origin: 0 50%;
+    background: linear-gradient(90deg, hsl(var(--yellow)), hsl(var(--yellow-soft)), hsl(var(--yellow)));
+    box-shadow: 0 0 12px hsl(0 0% 100% / 0.35);
+    will-change: transform;
+  }
+
+  .aurora-bg {
+    position: fixed;
+    inset: 0;
+    z-index: -20;
+    pointer-events: none;
+    background:
+      radial-gradient(ellipse at 35% 0%, hsl(0 0% 100% / 0.12), transparent 45%),
+      radial-gradient(ellipse at 90% 45%, hsl(0 0% 100% / 0.05), transparent 40%),
+      linear-gradient(hsl(0 0% 100% / 0.025) 1px, transparent 1px),
+      linear-gradient(90deg, hsl(0 0% 100% / 0.025) 1px, transparent 1px);
+    background-size: auto, auto, 56px 56px, 56px 56px;
+  }
+
+  .marquee-track {
+    display: flex;
+    width: max-content;
+    gap: 0.75rem;
+    animation: marquee 42s linear infinite;
+    will-change: transform;
+  }
+
+  .marquee-reverse {
+    animation-direction: reverse;
   }
 
   .yellow-glow {
@@ -196,11 +235,29 @@
   50% { transform: translateY(15px) translateX(-15px); }
 }
 
-.float-slow { animation: float-slow 8s ease-in-out infinite; }
-.float-slower { animation: float-slower 11s ease-in-out infinite; }
+.float-slow,
+.float-slower {
+  animation: none;
+}
+
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
 
 @keyframes pulse-dot {
   0%, 100% { opacity: 1; box-shadow: 0 0 0 0 hsl(0 0% 100% / 0.45); }
   50% { opacity: 0.6; box-shadow: 0 0 0 8px hsl(0 0% 100% / 0); }
 }
 .pulse-dot { animation: pulse-dot 2s ease-out infinite; }
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: 0.001ms !important;
+  }
+}
