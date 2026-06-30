@@ -65,7 +65,7 @@ export function CursorSpotlight() {
     };
   }, []);
 
-  return <div ref={ref} aria-hidden className="cursor-spotlight hidden md:block" />;
+  return <div ref={ref} aria-hidden className="cursor-spotlight" />;
 }
 
 /* ---------- Aurora animated background ---------- */

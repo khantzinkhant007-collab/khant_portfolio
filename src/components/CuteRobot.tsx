@@ -94,7 +94,7 @@ export function CuteRobot() {
   return (
     <div
       ref={wrapRef}
-      className="pointer-events-auto fixed left-4 sm:left-6 bottom-4 sm:bottom-6 z-[70] hidden md:block select-none"
+      className="pointer-events-auto fixed left-3 sm:left-6 bottom-3 sm:bottom-6 z-[90] block origin-bottom-left scale-75 sm:scale-90 md:scale-100 select-none"
       onMouseEnter={() => setHover(true)}
       onMouseLeave={() => setHover(false)}
       aria-hidden
