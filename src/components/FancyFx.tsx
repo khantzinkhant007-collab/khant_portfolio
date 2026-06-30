@@ -34,7 +34,38 @@ export function ScrollProgress() {
 
 /* ---------- Cursor spotlight (desktop only) ---------- */
 export function CursorSpotlight() {
-  return null;
+  const ref = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (window.matchMedia("(pointer: coarse)").matches) return;
+
+    const spot = ref.current;
+    if (!spot) return;
+
+    let frame = 0;
+    let x = -500;
+    let y = -500;
+
+    const update = () => {
+      frame = 0;
+      spot.style.transform = `translate3d(${x - 240}px, ${y - 240}px, 0)`;
+    };
+
+    const onMove = (event: MouseEvent) => {
+      x = event.clientX;
+      y = event.clientY;
+      if (!frame) frame = window.requestAnimationFrame(update);
+    };
+
+    update();
+    window.addEventListener("mousemove", onMove, { passive: true });
+    return () => {
+      if (frame) window.cancelAnimationFrame(frame);
+      window.removeEventListener("mousemove", onMove);
+    };
+  }, []);
+
+  return <div ref={ref} aria-hidden className="cursor-spotlight hidden md:block" />;
 }
 
 /* ---------- Aurora animated background ---------- */

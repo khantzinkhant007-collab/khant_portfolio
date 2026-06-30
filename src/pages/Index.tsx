@@ -22,10 +22,12 @@ import { useReveal } from "@/hooks/use-reveal";
 import { toast } from "sonner";
 import {
   Aurora,
+  CursorSpotlight,
   Magnetic,
   Marquee,
   ScrollProgress,
 } from "@/components/FancyFx";
+import { CuteRobot } from "@/components/CuteRobot";
 import petSaverScreenshot from "@/assets/pet-saver-screenshot.png";
 import profilePhotoUrl from "@/assets/profile-photo-optimized.jpg";
 
@@ -760,6 +762,8 @@ const Index = () => {
     <main className="relative">
       <ScrollProgress />
       <Aurora />
+      <CursorSpotlight />
+      <CuteRobot />
       <Nav />
       <Hero />
       <About />
