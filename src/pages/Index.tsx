@@ -130,7 +130,7 @@ function Hero() {
           <div className="lg:col-span-7 animate-fade-in-up">
             <div className="inline-flex items-center gap-2 glass rounded-full px-3 py-1 text-xs text-muted-foreground mb-6">
               <span className="h-1.5 w-1.5 rounded-full bg-yellow pulse-dot" />
-              インターン・アルバイト募集中
+              インターン・アルバイト応募中
             </div>
 
             <h1 className="text-5xl sm:text-6xl lg:text-7xl font-semibold tracking-tight leading-[1.05]">

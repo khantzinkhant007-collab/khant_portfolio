@@ -9,3 +9,6 @@ build/
 storage/logs/
 .workspace/
 *.tsbuildinfo
+
+.vercel
+.env*
