@@ -32,40 +32,6 @@ export function ScrollProgress() {
   return <div ref={ref} className="scroll-progress" />;
 }
 
-/* ---------- Cursor spotlight (desktop only) ---------- */
-export function CursorSpotlight() {
-  const ref = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    const spot = ref.current;
-    if (!spot) return;
-
-    let frame = 0;
-    let x = -500;
-    let y = -500;
-
-    const update = () => {
-      frame = 0;
-      spot.style.transform = `translate3d(${x - 280}px, ${y - 280}px, 0)`;
-    };
-
-    const onMove = (event: MouseEvent) => {
-      x = event.clientX;
-      y = event.clientY;
-      if (!frame) frame = window.requestAnimationFrame(update);
-    };
-
-    update();
-    window.addEventListener("mousemove", onMove, { passive: true });
-    return () => {
-      if (frame) window.cancelAnimationFrame(frame);
-      window.removeEventListener("mousemove", onMove);
-    };
-  }, []);
-
-  return <div ref={ref} aria-hidden className="cursor-spotlight" />;
-}
-
 /* ---------- Aurora animated background ---------- */
 export function Aurora() {
   return (

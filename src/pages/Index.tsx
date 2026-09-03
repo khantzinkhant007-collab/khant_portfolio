@@ -25,7 +25,6 @@ import { useReveal } from "@/hooks/use-reveal";
 import { toast } from "sonner";
 import {
   Aurora,
-  CursorSpotlight,
   Magnetic,
   Marquee,
   ScrollProgress,
@@ -539,6 +538,14 @@ function FeaturedProject() {
 
                 <div className="flex flex-wrap gap-3 mt-8">
                   <a
+                    href="https://github.com/khantzinkhant007-collab/QR-CODE-sharer.git"
+                    className="inline-flex items-center gap-1.5 text-xs font-medium px-4 py-2 rounded-full bg-yellow text-primary-foreground yellow-glow-hover"
+                  >
+                    <Github className="h-3.5 w-3.5" /> ギットハブリポジトリ
+                  </a>
+                </div>
+                <div className="flex flex-wrap gap-3 mt-8">
+                  <a
                     href="https://qr-code-sharer.vercel.app/"
                     target="_blank"
                     rel="noreferrer"
@@ -547,9 +554,9 @@ function FeaturedProject() {
                     <ExternalLink className="h-3.5 w-3.5" /> ライブアプリ
                   </a>
                 </div>
-                <p className="mt-3 text-[11px] text-muted-foreground break-all">
+                {/* <p className="mt-3 text-[11px] text-muted-foreground break-all">
                   ダウンロードURL: scansend-api-production.up.railway.app/d/&#123;unique-token&#125;
-                </p>
+                </p> */}
               </div>
 
               <div className="relative min-h-[420px] lg:min-h-full p-6 sm:p-10 flex items-center justify-center border-t lg:border-t-0 lg:border-l border-white/5">
@@ -714,7 +721,7 @@ function Goals() {
 /* ---------- Recruiter Profile ---------- */
 function Recruiter() {
   const rows: Array<[string, string]> = [
-    ["名前", "カント ジン"],
+    ["名前", "カンゼイン"],
     ["所在地", "大阪、日本"],
     ["日本語", "JLPT N2レベル"],
     ["現在", "アイティー学生"],
@@ -874,7 +881,6 @@ const Index = () => {
     <main className="relative">
       <ScrollProgress />
       <Aurora />
-      <CursorSpotlight />
       <CuteRobot />
       <Nav />
       <Hero />

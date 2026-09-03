@@ -151,22 +151,6 @@
     background-size: auto, auto, 56px 56px, 56px 56px;
   }
 
-  .cursor-spotlight {
-    position: fixed;
-    top: 0;
-    left: 0;
-    z-index: 80;
-    width: 560px;
-    height: 560px;
-    pointer-events: none;
-    border-radius: 9999px;
-    background: radial-gradient(circle, hsl(0 0% 100% / 0.18), hsl(0 0% 100% / 0.08) 32%, transparent 66%);
-    mix-blend-mode: screen;
-    opacity: 1;
-    transform: translate3d(-500px, -500px, 0);
-    will-change: transform;
-  }
-
   .marquee-track {
     display: flex;
     width: max-content;
