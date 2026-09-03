@@ -16,6 +16,9 @@ import {
   BookOpen,
   Layers,
   ExternalLink,
+  QrCode,
+  ShieldCheck,
+  Upload,
 } from "lucide-react";
 import { TypingText } from "@/components/TypingText";
 import { useReveal } from "@/hooks/use-reveal";
@@ -394,7 +397,7 @@ function Skills() {
 
 /* ---------- Featured Project ---------- */
 function FeaturedProject() {
-  const features = [
+  const petSaverFeatures = [
     "ログインとユーザー認証",
     "貯金目標と進捗管理",
     "入金・出金記録",
@@ -403,7 +406,17 @@ function FeaturedProject() {
     "レシート読み取り / OCRの構想",
     "貯金と支出分析のチャート",
   ];
-  const stack = ["リアクト", "ピーエイチピー", "ララベル / ピーエイチピーエーピーアイ", "マイエスキューエル", "ジャバスクリプト", "ギット"];
+  const petSaverStack = ["リアクト", "ピーエイチピー", "ララベル / ピーエイチピーエーピーアイ", "マイエスキューエル", "ジャバスクリプト", "ギット"];
+  const scanSendFeatures = [
+    "写真・動画のアップロード",
+    "ファイルごとの固有QRコード",
+    "有効期限付きダウンロードリンク",
+    "推測されにくいユニークトークン",
+    "Laravelによる非公開ファイル配信",
+    "モバイル対応PWA",
+    "Vercel / Railwayの分離構成",
+  ];
+  const scanSendStack = ["PWA", "ララベル", "マイエスキューエル", "Vercel", "Railway", "非公開ストレージ"];
   return (
     <section id="projects" className="py-24 sm:py-32 scroll-mt-nav">
       <div className="container">
@@ -430,7 +443,7 @@ function FeaturedProject() {
                 </p>
 
                 <div className="flex flex-wrap gap-2 mt-6">
-                  {stack.map((s) => (
+                  {petSaverStack.map((s) => (
                     <span key={s} className="text-xs glass rounded-full px-3 py-1.5">
                       {s}
                     </span>
@@ -438,7 +451,7 @@ function FeaturedProject() {
                 </div>
 
                 <ul className="mt-7 grid sm:grid-cols-2 gap-x-4 gap-y-2.5">
-                  {features.map((f) => (
+                  {petSaverFeatures.map((f) => (
                     <li key={f} className="flex items-start gap-2 text-sm text-foreground/80">
                       <span className="mt-1.5 h-1.5 w-1.5 rounded-full bg-yellow shrink-0" />
                       {f}
@@ -480,6 +493,105 @@ function FeaturedProject() {
                     loading="lazy"
                   />
                   <div className="pointer-events-none absolute inset-0 rounded-2xl ring-1 ring-white/10" />
+                </div>
+              </div>
+            </div>
+          </div>
+        </Reveal>
+
+        <Reveal delay={120} className="mt-8">
+          <div className="glass-strong rounded-3xl overflow-hidden relative">
+            <div className="absolute -bottom-32 -left-32 h-72 w-72 rounded-full bg-yellow/15 blur-3xl pointer-events-none" />
+            <div className="grid lg:grid-cols-2 gap-0">
+              <div className="p-8 sm:p-10 relative">
+                <div className="inline-flex items-center gap-2 glass-yellow rounded-full px-3 py-1 text-xs text-yellow mb-4">
+                  <Sparkles className="h-3 w-3" /> フルスタック制作
+                </div>
+                <h3 className="text-3xl sm:text-4xl font-semibold tracking-tight">
+                  ScanSend
+                </h3>
+                <p className="text-yellow text-sm font-medium mt-1">
+                  写真・動画を安全に共有するQRファイル共有PWA
+                </p>
+                <p className="mt-5 text-foreground/80 leading-relaxed">
+                  ScanSendは、写真や動画をアップロードすると、ファイルごとに専用のQRコードと
+                  有効期限付きダウンロードリンクを発行するウェブ/PWAです。受け取る側はQRコードを
+                  スキャンしてファイルをダウンロードできます。フロントエンドはVercel、Laravel API・
+                  MySQL・非公開ファイルストレージはRailwayで運用しています。
+                </p>
+
+                <div className="flex flex-wrap gap-2 mt-6">
+                  {scanSendStack.map((s) => (
+                    <span key={s} className="text-xs glass rounded-full px-3 py-1.5">
+                      {s}
+                    </span>
+                  ))}
+                </div>
+
+                <ul className="mt-7 grid sm:grid-cols-2 gap-x-4 gap-y-2.5">
+                  {scanSendFeatures.map((f) => (
+                    <li key={f} className="flex items-start gap-2 text-sm text-foreground/80">
+                      <span className="mt-1.5 h-1.5 w-1.5 rounded-full bg-yellow shrink-0" />
+                      {f}
+                    </li>
+                  ))}
+                </ul>
+
+                <div className="flex flex-wrap gap-3 mt-8">
+                  <a
+                    href="https://qr-code-sharer.vercel.app/"
+                    target="_blank"
+                    rel="noreferrer"
+                    className="inline-flex items-center gap-1.5 text-xs font-medium px-4 py-2 rounded-full bg-yellow text-primary-foreground yellow-glow-hover"
+                  >
+                    <ExternalLink className="h-3.5 w-3.5" /> ライブアプリ
+                  </a>
+                </div>
+                <p className="mt-3 text-[11px] text-muted-foreground break-all">
+                  ダウンロードURL: scansend-api-production.up.railway.app/d/&#123;unique-token&#125;
+                </p>
+              </div>
+
+              <div className="relative min-h-[420px] lg:min-h-full p-6 sm:p-10 flex items-center justify-center border-t lg:border-t-0 lg:border-l border-white/5">
+                <div className="glass rounded-[2rem] w-full max-w-md tilt-card relative overflow-hidden shadow-[0_25px_80px_hsl(0_0%_0%/0.28)]">
+                  <div className="flex items-center justify-between px-5 py-4 border-b border-white/5">
+                    <div className="flex items-center gap-2">
+                      <span className="grid h-8 w-8 place-items-center rounded-xl bg-yellow text-primary-foreground">
+                        <QrCode className="h-4 w-4" aria-hidden="true" />
+                      </span>
+                      <div>
+                        <p className="text-sm font-semibold leading-none">ScanSend</p>
+                        <p className="mt-1 text-[10px] text-muted-foreground">PRIVATE FILE SHARING</p>
+                      </div>
+                    </div>
+                    <span className="inline-flex items-center gap-1 text-[10px] text-foreground/70">
+                      <ShieldCheck className="h-3.5 w-3.5 text-yellow" aria-hidden="true" /> 非公開
+                    </span>
+                  </div>
+
+                  <div className="p-5 sm:p-6">
+                    <div className="rounded-2xl border border-dashed border-yellow/35 bg-yellow/[0.04] px-5 py-7 text-center">
+                      <span className="mx-auto grid h-11 w-11 place-items-center rounded-2xl glass-yellow text-yellow">
+                        <Upload className="h-5 w-5" aria-hidden="true" />
+                      </span>
+                      <p className="mt-3 text-sm font-medium">写真または動画をアップロード</p>
+                      <p className="mt-1 text-[11px] text-muted-foreground">ファイルごとに安全なリンクを作成</p>
+                    </div>
+
+                    <div className="mt-4 grid grid-cols-[1fr_auto] gap-3 items-stretch">
+                      <div className="rounded-2xl bg-black/20 p-4 min-w-0">
+                        <p className="text-[10px] uppercase tracking-[0.16em] text-muted-foreground">Download link</p>
+                        <p className="mt-2 truncate text-xs text-foreground/80">/d/8f7a2c...</p>
+                        <div className="mt-4 flex items-center gap-2 text-[10px] text-muted-foreground">
+                          <span className="h-1.5 w-1.5 rounded-full bg-yellow pulse-dot" />
+                          有効期限付き
+                        </div>
+                      </div>
+                      <div className="grid place-items-center rounded-2xl bg-white p-3 text-black">
+                        <QrCode className="h-16 w-16 sm:h-20 sm:w-20" aria-label="ダウンロード用QRコードのイメージ" />
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
