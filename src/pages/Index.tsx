@@ -546,7 +546,7 @@ function FeaturedProject() {
                 </div>
                 <div className="flex flex-wrap gap-3 mt-8">
                   <a
-                    href="https://qr-code-sharer.vercel.app/"
+                    href="https://15.168.129.246/"
                     target="_blank"
                     rel="noreferrer"
                     className="inline-flex items-center gap-1.5 text-xs font-medium px-4 py-2 rounded-full bg-yellow text-primary-foreground yellow-glow-hover"
