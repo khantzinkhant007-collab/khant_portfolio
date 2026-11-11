@@ -466,7 +466,7 @@ function FeaturedProject() {
                     <Github className="h-3.5 w-3.5" /> ギットハブリポジトリ
                   </a>
                   <a
-                    href="https://petsaver.infy.click/"
+                    href="https://16.208.99.1/"
                     className="inline-flex items-center gap-1.5 text-xs font-medium px-4 py-2 rounded-full glass yellow-glow-hover"
                   >
                     <ExternalLink className="h-3.5 w-3.5" /> デモ
